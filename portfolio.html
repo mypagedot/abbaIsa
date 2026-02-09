@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abba Isa Mohammed | Fashion & Design Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --light: #f1f1f1;
+            --gray: #8a8a8a;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        /* Portfolio Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .portfolio {
+            background-color: #f5f5f5;
+        }
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--primary);
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--secondary);
+        }
+
+        .portfolio-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .portfolio-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .portfolio-btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .category-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                padding: 10px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                gap: 15px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                border-radius: 5px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .portfolio-img {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-filter {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .cta-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Abba<span>Isa</span></a>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+                <p style="color: #666; margin-top: 15px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Explore my collection of traditional and contemporary Nigerian fashion designs. Each piece is crafted with precision and cultural authenticity.
+                </p>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Works</button>
+                <button class="filter-btn" data-filter="traditional">Traditional</button>
+                <button class="filter-btn" data-filter="contemporary">Contemporary</button>
+                <button class="filter-btn" data-filter="bridal">Bridal</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Item 1 -->
+                <div class="portfolio-item" data-category="traditional">
+                    <div class="portfolio-img">
+                        <img src="img/sample1.jpeg" alt="Traditional Agbada Design">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="category-badge">Traditional</span>
+                        <h4>Royal Agbada Collection</h4>
+                        <p>Traditional Nigerian men's wear with intricate embroidery, showcasing cultural heritage with modern tailoring techniques. Made with premium fabrics and detailed handwork.</p>
+                        <a href="contact.html?project=Royal+Agbada+Collection" class="portfolio-btn">Order This Design</a>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="portfolio-item" data-category="contemporary">
+                    <div class="portfolio-img">
+                        <img src="img/sample2.jpeg" alt="Contemporary Dress Design">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="category-badge">Contemporary</span>
+                        <h4>Modern Ankara Fusion</h4>
+                        <p>Contemporary dress design blending Ankara prints with western silhouettes for a unique cross-cultural fashion statement. Perfect for modern professional settings.</p>
+                        <a href="contact.html?project=Modern+Ankara+Fusion" class="portfolio-btn">Customize This Design</a>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="portfolio-item" data-category="bridal">
+                    <div class="portfolio-img">
+                        <img src="img/sample3.jpeg" alt="Bridal Gown Design">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="category-badge">Bridal</span>
+                        <h4>Traditional Bridal Attire</h4>
+                        <p>Custom-designed bridal gown incorporating traditional Nigerian elements with modern bridal fashion trends. Features lace, beads, and traditional embroidery.</p>
+                        <a href="contact.html?project=Traditional+Bridal+Attire" class="portfolio-btn">Inquire for Bridal</a>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="portfolio-item" data-category="traditional">
+                    <div class="portfolio-img">
+                        <img src="img/sample4.jpeg" alt="Traditional Women's Wear">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="category-badge">Traditional</span>
+                        <h4>Buba and Iro Collection</h4>
+                        <p>Traditional Yoruba women's attire with modern adaptations, featuring high-quality fabrics and detailed finishing. Available in various colors and patterns.</p>
+                        <a href="contact.html?project=Buba+and+Iro+Collection" class="portfolio-btn">Order Traditional Wear</a>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="portfolio-item" data-category="accessories">
+                    <div class="portfolio-img">
+                        <img src="img/sample3.jpeg" alt="Fashion Accessories">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="category-badge">Accessories</span>
+                        <h4>Gele & Accessories Line</h4>
+                        <p>Handcrafted traditional headgear (Gele) and complementary accessories designed to complete the Nigerian fashion ensemble. Custom tying available.</p>
+                        <a href="contact.html?project=Gele+Accessories+Line" class="portfolio-btn">Order Accessories</a>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="portfolio-item" data-category="contemporary">
+                    <div class="portfolio-img">
+                        <img src="img/sample1.jpeg" alt="Casual Wear Design">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="category-badge">Contemporary</span>
+                        <h4>Smart Casual Collection</h4>
+                        <p>Everyday wear designs that incorporate Nigerian textile patterns into modern casual clothing for all ages. Comfortable yet stylish for daily wear.</p>
+                        <a href="contact.html?project=Smart+Casual+Collection" class="portfolio-btn">Get Casual Wear</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h3>Ready for a Custom Design?</h3>
+                <p>Each design can be customized to your preferences. Whether you need adjustments to size, fabric, or style elements, I work closely with clients to create the perfect piece.</p>
+                <a href="contact.html" class="cta-btn">Start Your Custom Order</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Abba Isa Mohammed</h3>
+                    <p>Fashion Designer & Computer Science student based in Jalingo, Taraba State. Creating unique designs that blend traditional Nigerian aesthetics with contemporary fashion.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; color: #ccc;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="about.html" style="color: #ccc; text-decoration: none;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="portfolio.html" style="color: #ccc; text-decoration: none;">Portfolio</a></li>
+                        <li style="margin-bottom: 10px;"><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Nassarawo Main Market, Jalingo, Taraba State</p>
+                    <p><i class="fas fa-university" style="margin-right: 10px;"></i> Taraba State University, Jalingo</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> abba.isa.fashion@gmail.com</p>
+                    <p><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +234 810 123 4567</p>
+                </div>
+            </div>
+             <div class="copyright">
+                <p>&copy; 2026 Abba Isa Mohammed. All Rights Reserved. | Fashion & Design Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Toggle menu icon
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                
+                // Update active class
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                link.classList.add('active');
+            });
+        });
+
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'flex';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Only prevent default for on-page anchor links
+                if (href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(href);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add animation to portfolio items on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

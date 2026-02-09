@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Abba Isa Mohammed | Fashion & Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --light: #f1f1f1;
+            --gray: #8a8a8a;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), url('img/about.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* About Content */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Details Section */
+        .details-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            border-radius: 15px;
+            margin-bottom: 80px;
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .detail-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .detail-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .detail-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            margin-bottom: 100px;
+        }
+
+        .philosophy h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .philosophy h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .philosophy-item {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .philosophy-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .philosophy-item i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .philosophy-item h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .philosophy-item p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                padding: 10px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                gap: 15px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                border-radius: 5px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .about-hero {
+                padding: 70px 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-text h2, .philosophy h2 {
+                font-size: 1.8rem;
+            }
+            
+            .detail-card, .philosophy-item {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="home.html" class="logo">Abba<span>Isa</span></a>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Me</h1>
+            <p>Fashion Designer & <span class="highlight">Computer Science</span> Student blending technical precision with creative vision to craft unique, innovative designs.</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Abba Isa Mohammed</h2>
+                <p>I am a passionate fashion designer and computer science student based in Jalingo, Taraba State. My unique journey combines the analytical thinking of computer science with the creative expression of fashion design, allowing me to approach design problems with innovative solutions.</p>
+                <p>My work is characterized by a fusion of traditional Nigerian aesthetics with contemporary design principles, creating pieces that are both culturally resonant and modern. Operating from Nassarawo Main Market in Jalingo, I draw inspiration from the rich cultural heritage of Taraba State and its diverse communities.</p>
+                <p>As a student at Taraba State University, I'm constantly exploring how technology can enhance the fashion industry - from digital pattern making to e-commerce solutions for local designers. This dual expertise allows me to bridge the gap between traditional craftsmanship and modern technology.</p>
+            </div>
+            <div class="about-image">
+                <img src="img/hero.jpeg" alt="Abba Isa Mohammed">
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section">
+        <div class="container">
+            <div class="details-container">
+                <div class="detail-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p><strong>Taraba State University, Jalingo</strong><br>
+                    Bachelor of Science in Computer Science<br>
+                    Currently pursuing my degree with focus on software development and digital design applications.</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Profession</h3>
+                    <p><strong>Fashion Designer & Tailor</strong><br>
+                    Specializing in traditional and contemporary Nigerian fashion.<br>
+                    Creating custom designs for individuals, events, and cultural celebrations with attention to detail and cultural authenticity.</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p><strong>Nassarawo Main Market, Jalingo</strong><br>
+                    Taraba State, Nigeria<br>
+                    My workshop is located in the heart of Jalingo's commercial center, where I serve clients from across Taraba State and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="container philosophy">
+        <h2>My Design Philosophy</h2>
+        <div class="philosophy-content">
+            <div class="philosophy-item">
+                <i class="fas fa-blender"></i>
+                <h3>Fusion of Traditions</h3>
+                <p>Blending traditional Nigerian textile artistry with contemporary fashion trends to create timeless pieces that honor heritage while embracing modernity.</p>
+            </div>
+            <div class="philosophy-item">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Tech-Infused Design</h3>
+                <p>Applying computer science principles to fashion design - from digital pattern creation to data-driven trend analysis, bringing precision to creativity.</p>
+            </div>
+            <div class="philosophy-item">
+                <i class="fas fa-people-carry"></i>
+                <h3>Community-Centric</h3>
+                <p>Creating fashion that reflects and celebrates the diverse cultural tapestry of Taraba State, supporting local artisans and sustainable practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Abba Isa Mohammed</h3>
+                    <p>Fashion Designer & Computer Science student based in Jalingo, Taraba State. Creating unique designs that blend traditional Nigerian aesthetics with contemporary fashion.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; color: #ccc;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="about.html" style="color: #ccc; text-decoration: none;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="portfolio.html" style="color: #ccc; text-decoration: none;">Portfolio</a></li>
+                        <li style="margin-bottom: 10px;"><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Nassarawo Main Market, Jalingo, Taraba State</p>
+                    <p><i class="fas fa-university" style="margin-right: 10px;"></i> Taraba State University, Jalingo</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> abba.isa.fashion@gmail.com</p>
+                    <p><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +234 810 123 4567</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Abba Isa Mohammed. All Rights Reserved. | Fashion & Design Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Toggle menu icon
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                
+                // Update active class
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                link.classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Only prevent default for on-page anchor links
+                if (href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(href);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
